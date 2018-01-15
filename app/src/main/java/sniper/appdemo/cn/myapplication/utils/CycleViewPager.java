@@ -109,7 +109,7 @@ public class CycleViewPager extends FrameLayout
     /**
      * 初始化View
      */
-    //@SuppressLint("HandlerLeak")
+    @SuppressLint("HandlerLeak")
     private void initView() {
         LayoutInflater.from(mContext).inflate(R.layout.layout_cycle_view, this, true);
         mViewPager = (ViewPager) findViewById(R.id.cycle_view_pager);
@@ -152,6 +152,7 @@ public class CycleViewPager extends FrameLayout
     }
 
     public void setData(List<Info> list, ImageCycleViewListener listener) {
+
         setData(list, listener, 0);
     }
 
@@ -170,6 +171,10 @@ public class CycleViewPager extends FrameLayout
         }
 
         mViews.clear();
+        int t = 0;
+        while(t < list.size()){
+            System.out.println("图片连接为:"+list.get(t++).getUrl());
+        }
         infos = list;
 
         if (isCycle) {

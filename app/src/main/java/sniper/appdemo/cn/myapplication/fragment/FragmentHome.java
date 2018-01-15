@@ -51,6 +51,7 @@ public class FragmentHome extends Fragment {
 //            }
 //        });
         mCycleViewPager = (CycleViewPager) view.findViewById(R.id.cycle_view);
+        initData();
         initView();
 
         /**
