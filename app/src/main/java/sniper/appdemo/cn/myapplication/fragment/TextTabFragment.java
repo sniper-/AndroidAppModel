@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import sniper.appdemo.cn.myapplication.Constants;
 import sniper.appdemo.cn.myapplication.R;
 
 /**
@@ -47,7 +46,8 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
         mTMe = (TextView) view.findViewById(R.id.tv_person);
         Bundle bundle = getArguments();
         if (bundle != null) {
-            String s = bundle.getString(Constants.ARGS);
+//            String s = bundle.getString(Constants.ARGS);
+            String s = "test";
             Log.i("Kevin", s + "");
             if (!TextUtils.isEmpty(s)) {
                 mTextView.setText(s);

@@ -8,10 +8,11 @@
     <item
         android:id="@+id/libra"
         android:title="notification"
-        android:icon="@drawable/notification"
+        android:icon="@drawable/ic_navi_search"
         app:showAsAction="always"/>
     <item
         android:id="@+id/share"
-        android:title="Share"
+        android:title="签到"
+        android:icon="@drawable/ic_navi_sign"
         app:showAsAction="always"/>
 </menu>
