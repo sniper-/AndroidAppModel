@@ -14,13 +14,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.bigkoo.convenientbanner.ConvenientBanner;
+
+import sniper.appdemo.cn.myapplication.bean.BannerBean;
 import sniper.appdemo.cn.myapplication.fragment.TextTabFragment;
 
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
 
     private TextTabFragment mTextTabFragment;
+    ConvenientBanner<BannerBean> convenientBanner;
     private Toolbar mToolbar;
+    private static final long DELAY_TIME = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,5 +124,23 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View view) {
 
+    }
+
+    // 开始自动翻页
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(convenientBanner != null){
+            convenientBanner.startTurning(DELAY_TIME);
+        }
+    }
+
+    // 停止自动翻页
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(convenientBanner != null){
+            convenientBanner.stopTurning();
+        }
     }
 }

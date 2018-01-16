@@ -171,15 +171,11 @@ public class CycleViewPager extends FrameLayout
         }
 
         mViews.clear();
-        int t = 0;
-        while(t < list.size()){
-            System.out.println("图片连接为:"+list.get(t++).getUrl());
-        }
-        infos = list;
 
+        infos = list;
         if (isCycle) {
             //添加轮播图View，数量为集合数+2
-            // 将最后一个View添加进来
+            //将最后一个View添加进来
             mViews.add(getImageView(mContext, infos.get(infos.size() - 1).getUrl()));
             for (int i = 0; i < infos.size(); i++) {
                 mViews.add(getImageView(mContext, infos.get(i).getUrl()));
@@ -192,7 +188,6 @@ public class CycleViewPager extends FrameLayout
                 mViews.add(getImageView(mContext, infos.get(i).getUrl()));
             }
         }
-
 
         if (mViews == null || mViews.size() == 0) {
             //没有View时隐藏整个布局
@@ -209,6 +204,8 @@ public class CycleViewPager extends FrameLayout
         if (isCycle)
             mIndicators = new ImageView[ivSize - 2];
         mIndicatorLayout.removeAllViews();
+        System.out.println("ivSize=["+ivSize+"]");
+        System.out.println("mIndicators.length=["+mIndicators.length+"]");
         for (int i = 0; i < mIndicators.length; i++) {
             mIndicators[i] = new ImageView(mContext);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -224,7 +221,7 @@ public class CycleViewPager extends FrameLayout
         setIndicator(0);
 
         mViewPager.setOffscreenPageLimit(3);
-        mViewPager.setOnPageChangeListener(this);
+        mViewPager.addOnPageChangeListener(this);
         mViewPager.setAdapter(mAdapter);
         if (showPosition < 0 || showPosition >= mViews.size())
             showPosition = 0;
@@ -272,12 +269,10 @@ public class CycleViewPager extends FrameLayout
         try {
 
             for (int i = 0; i < mIndicators.length; i++) {
-                mIndicators[i]
-                        .setBackgroundResource(mIndicatorUnselected);
+                mIndicators[i].setBackgroundResource(mIndicatorUnselected);
             }
             if (mIndicators.length > selectedPosition)
-                mIndicators[selectedPosition]
-                        .setBackgroundResource(mIndicatorSelected);
+                mIndicators[selectedPosition].setBackgroundResource(mIndicatorSelected);
         } catch (Exception e) {
             Log.i(TAG, "指示器路径不正确");
         }
