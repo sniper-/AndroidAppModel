@@ -213,7 +213,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemClickLis
         //在这里我使用banner作为listview的头部所以需要另外载入
         banner = LayoutInflater.from(getActivity()).inflate(R.layout.banner_layout, null);
         //从对应父布局加载你的banner
-        convenientBanner = (ConvenientBanner<BannerBean>) banner.findViewById(R.id.banner);
+        convenientBanner = banner.findViewById(R.id.banner);
         convenientBanner.setPages(new CBViewHolderCreator() {
             @Override
             public Object createHolder() {
