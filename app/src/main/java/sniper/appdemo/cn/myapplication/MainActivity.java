@@ -1,8 +1,6 @@
 package sniper.appdemo.cn.myapplication;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,14 +14,14 @@ import android.view.MenuItem;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 
-import sniper.appdemo.cn.myapplication.bean.BannerBean;
+import sniper.appdemo.cn.myapplication.bean.HomePicBean;
 import sniper.appdemo.cn.myapplication.fragment.TextTabFragment;
 
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
 
     private TextTabFragment mTextTabFragment;
-    ConvenientBanner<BannerBean> convenientBanner;
+    ConvenientBanner<HomePicBean> convenientBanner;
     private Toolbar mToolbar;
     private static final long DELAY_TIME = 5000;
 

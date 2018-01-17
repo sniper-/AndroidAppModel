@@ -67,7 +67,7 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
     private void setDefaultFragment() {
         switchFrgment(0);
         //set the defalut tab state
-        setTabState(mTHome, R.drawable.home_checked, getColor(R.color.colorPrimary));
+        setTabState(mTHome, R.drawable.ic_navi_home_checked, getColor(R.color.colorPrimary));
     }
 
     @Override
@@ -75,19 +75,19 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
         resetTabState();//reset the tab state
         switch (view.getId()) {
             case R.id.tv_home:
-                setTabState(mTHome, R.drawable.home_checked, getColor(R.color.colorPrimary));
+                setTabState(mTHome, R.drawable.ic_navi_home_checked, getColor(R.color.colorPrimary));
                 switchFrgment(0);
                 break;
             case R.id.tv_dash:
-                setTabState(mTLocation, R.drawable.dash_checked, getColor(R.color.colorPrimary));
+                setTabState(mTLocation, R.drawable.ic_navi_bottom_dash_checked, getColor(R.color.colorPrimary));
                 switchFrgment(1);
                 break;
             case R.id.tv_like:
-                setTabState(mTLike, R.drawable.search_checked, getColor(R.color.colorPrimary));
+                setTabState(mTLike, R.drawable.ic_navi_bottom_search_checked, getColor(R.color.colorPrimary));
                 switchFrgment(2);
                 break;
             case R.id.tv_person:
-                setTabState(mTMe, R.drawable.person_checked, getColor(R.color.colorPrimary));
+                setTabState(mTMe, R.drawable.ic_navi_bottom_person_checked, getColor(R.color.colorPrimary));
                 switchFrgment(3);
                 break;
         }
@@ -102,7 +102,7 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
         switch (i) {
             case 0:
                 if (mHomeFragment == null) {
-                    mHomeFragment = mHomeFragment.newInstance(getString(R.string.item_home));
+                    mHomeFragment = mHomeFragment.newInstance();
                 }
                 /**
                  * 防止每点击一次，fragment就重新加载一次数据导致数据重复
@@ -203,10 +203,10 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
      * revert the image color and text color to black
      */
     private void resetTabState() {
-        setTabState(mTHome, R.drawable.home, getColor(R.color.black_1));
-        setTabState(mTLocation, R.drawable.dash, getColor(R.color.black_1));
-        setTabState(mTLike, R.drawable.search, getColor(R.color.black_1));
-        setTabState(mTMe, R.drawable.person, getColor(R.color.black_1));
+        setTabState(mTHome, R.drawable.ic_navi_bottom_home, getColor(R.color.black_1));
+        setTabState(mTLocation, R.drawable.ic_navi_bottom_dash, getColor(R.color.black_1));
+        setTabState(mTLike, R.drawable.ic_navi_bottom_search, getColor(R.color.black_1));
+        setTabState(mTMe, R.drawable.ic_navi_bottom_person, getColor(R.color.black_1));
 
     }
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import sniper.appdemo.cn.myapplication.R;
-import sniper.appdemo.cn.myapplication.bean.HomeBean;
+import sniper.appdemo.cn.myapplication.bean.HomeContentBean;
 
 /**
  * Created by sniper on 2018/1/10.
@@ -21,10 +21,10 @@ import sniper.appdemo.cn.myapplication.bean.HomeBean;
  * Created by sniper on 2017/10/25.
  */
 
-public class HomeAdapter extends BaseAdapter {
+public class HomeContentAdapter extends BaseAdapter {
 
     private FragmentManager mFragment;
-    private List<HomeBean> mList;
+    private List<HomeContentBean> mList;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
 
@@ -32,7 +32,7 @@ public class HomeAdapter extends BaseAdapter {
      * 构造方法
      * @return
      */
-    public HomeAdapter(FragmentManager fragment, Context context, List<HomeBean> list) {
+    public HomeContentAdapter(FragmentManager fragment, Context context, List<HomeContentBean> list) {
         mFragment = fragment;
         mContext = context;
         mList = list;
@@ -54,27 +54,27 @@ public class HomeAdapter extends BaseAdapter {
         return position;
     }
 
-    private static class ViewHoder {
+    private static class ViewHolder {
         public TextView mTvHomeItemRemark;
         public TextView mTvHomeItemContent;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHoder viewHoder;
+        ViewHolder viewHolder;
         if(convertView == null) {
-            viewHoder = new ViewHoder();
+            viewHolder = new ViewHolder();
             convertView = mLayoutInflater.inflate(R.layout.list_item_home, null);
-            viewHoder.mTvHomeItemRemark = (TextView) convertView.findViewById(R.id.home_item_remark);
-            viewHoder.mTvHomeItemContent = (TextView) convertView.findViewById(R.id.home_item_content);
-            convertView.setTag(viewHoder);
+            viewHolder.mTvHomeItemRemark = convertView.findViewById(R.id.home_item_remark);
+            viewHolder.mTvHomeItemContent = convertView.findViewById(R.id.home_item_content);
+            convertView.setTag(viewHolder);
         } else {
-            viewHoder = (ViewHoder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        HomeBean bean = mList.get(position);
-        viewHoder.mTvHomeItemRemark.setText(bean.homeItemRemark);
-        viewHoder.mTvHomeItemContent.setText(bean.homeItemContent);
+        HomeContentBean bean = mList.get(position);
+        viewHolder.mTvHomeItemRemark.setText(bean.homeItemRemark);
+        viewHolder.mTvHomeItemContent.setText(bean.homeItemContent);
 
         return convertView;
     }

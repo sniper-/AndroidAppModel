@@ -13,24 +13,24 @@
     <TextView
         android:id="@+id/tv_home"
         style="@style/viewpager_navigation_bar_tab_style"
-        android:drawableTop="@drawable/home"
+        android:drawableTop="@drawable/ic_navi_bottom_home"
         android:text="@string/item_home"/>
 
     <TextView
         android:id="@+id/tv_dash"
         style="@style/viewpager_navigation_bar_tab_style"
-        android:drawableTop="@drawable/dash"
+        android:drawableTop="@drawable/ic_navi_bottom_dash"
         android:text="@string/item_location"/>
 
     <TextView
         android:id="@+id/tv_like"
         style="@style/viewpager_navigation_bar_tab_style"
-        android:drawableTop="@drawable/search"
+        android:drawableTop="@drawable/ic_navi_bottom_search"
         android:text="@string/item_like"/>
 
     <TextView
         android:id="@+id/tv_person"
         style="@style/viewpager_navigation_bar_tab_style"
-        android:drawableTop="@drawable/person"
+        android:drawableTop="@drawable/ic_navi_bottom_person"
         android:text="@string/item_person"/>
 </LinearLayout>
