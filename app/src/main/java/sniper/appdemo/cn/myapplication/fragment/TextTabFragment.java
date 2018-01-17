@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import sniper.appdemo.cn.myapplication.Constants;
 import sniper.appdemo.cn.myapplication.R;
 
 /**
@@ -23,9 +24,10 @@ import sniper.appdemo.cn.myapplication.R;
 public class TextTabFragment extends Fragment implements View.OnClickListener {
     private TextView mTHome, mTLocation, mTLike, mTMe, mTextView;
     private FragmentHome mHomeFragment;
-    private FragmentNotice mLocationFragment;
+    //private FragmentNotice mNoticeFragment;
     private FragmentDash mLikeFragment;
     private FragmentMine mPersonFragment;
+    private FragmentMarket mMarketFragment;
 
     public static TextTabFragment newInstance(String s) {
         TextTabFragment viewPagerFragment = new TextTabFragment();
@@ -39,11 +41,11 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_text_tab, container, false);
-        mTextView = (TextView) view.findViewById(R.id.activity_text_view);
-        mTHome = (TextView) view.findViewById(R.id.tv_home);
-        mTLocation = (TextView) view.findViewById(R.id.tv_dash);
-        mTLike = (TextView) view.findViewById(R.id.tv_like);
-        mTMe = (TextView) view.findViewById(R.id.tv_person);
+        mTextView = view.findViewById(R.id.activity_text_view);
+        mTHome = view.findViewById(R.id.tv_home);
+        mTLocation = view.findViewById(R.id.tv_dash);
+        mTLike = view.findViewById(R.id.tv_like);
+        mTMe = view.findViewById(R.id.tv_person);
         Bundle bundle = getArguments();
         if (bundle != null) {
 //            String s = bundle.getString(Constants.ARGS);
@@ -108,8 +110,8 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                  * 防止每点击一次，fragment就重新加载一次数据导致数据重复
                  * 下拉刷新可以使用transaction.replace(fragment)实现
                  */
-                if(mLocationFragment != null){
-                    transaction.hide(mLocationFragment);
+                if(mMarketFragment != null){
+                    transaction.hide(mMarketFragment);
                 }
                 if(mLikeFragment != null){
                     transaction.hide(mLikeFragment);
@@ -125,8 +127,9 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case 2:
-                if (mLocationFragment == null) {
-                    mLocationFragment = FragmentNotice.newInstance(getString(R.string.item_location));
+                if (mMarketFragment == null) {
+                    //mMarketFragment = FragmentNotice.newInstance(getString(R.string.item_location));
+                    mMarketFragment = FragmentMarket.newInstance(getString(R.string.item_location));
                 }
                 if(mHomeFragment != null){
                     transaction.hide(mHomeFragment);
@@ -137,18 +140,18 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 if(mPersonFragment != null){
                     transaction.hide(mPersonFragment);
                 }
-                if(!mLocationFragment.isAdded()){
-                    transaction.add(R.id.sub_content, mLocationFragment);
+                if(!mMarketFragment.isAdded()){
+                    transaction.add(R.id.sub_content, mMarketFragment);
                 }else{
-                    transaction.show(mLocationFragment);
+                    transaction.show(mMarketFragment);
                 }
                 break;
             case 1:
                 if (mLikeFragment == null) {
                     mLikeFragment = FragmentDash.newInstance(getString(R.string.item_like));
                 }
-                if(mLocationFragment != null){
-                    transaction.hide(mLocationFragment);
+                if(mMarketFragment != null){
+                    transaction.hide(mMarketFragment);
                 }
                 if(mHomeFragment != null){
                     transaction.hide(mHomeFragment);
@@ -166,8 +169,8 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 if (mPersonFragment == null) {
                     mPersonFragment = FragmentMine.newInstance(getString(R.string.item_person));
                 }
-                if(mLocationFragment != null){
-                    transaction.hide(mLocationFragment);
+                if(mMarketFragment != null){
+                    transaction.hide(mMarketFragment);
                 }
                 if(mLikeFragment != null){
                     transaction.hide(mLikeFragment);
