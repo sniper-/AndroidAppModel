@@ -102,7 +102,7 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
         switch (i) {
             case 0:
                 if (mHomeFragment == null) {
-                    mHomeFragment = mHomeFragment.newInstance();
+                    mHomeFragment = mHomeFragment.newInstance(getString(R.string.item_home));
                 }
                 /**
                  * 防止每点击一次，fragment就重新加载一次数据导致数据重复

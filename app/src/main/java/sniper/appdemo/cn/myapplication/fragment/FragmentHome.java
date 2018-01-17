@@ -2,6 +2,7 @@ package sniper.appdemo.cn.myapplication.fragment;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import sniper.appdemo.cn.myapplication.Constants;
 import sniper.appdemo.cn.myapplication.R;
 import sniper.appdemo.cn.myapplication.adapter.HomePicAdapter;
 import sniper.appdemo.cn.myapplication.adapter.HomeContentAdapter;
@@ -36,8 +38,11 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
 
 
 
-    public static FragmentHome newInstance(){
+    public static FragmentHome newInstance(String s){
         FragmentHome homeFragment = new FragmentHome();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.ARGS,s);
+        homeFragment.setArguments(bundle);
         return homeFragment;
     }
 

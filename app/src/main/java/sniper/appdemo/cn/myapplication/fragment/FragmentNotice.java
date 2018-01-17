@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import sniper.appdemo.cn.myapplication.Constants;
 import sniper.appdemo.cn.myapplication.R;
 import sniper.appdemo.cn.myapplication.adapter.NoticeAdapter;
 import sniper.appdemo.cn.myapplication.bean.NoticeBean;
@@ -27,11 +28,11 @@ public class FragmentNotice extends Fragment {
     private NoticeAdapter nAapter;
 
     public static FragmentNotice newInstance(String s){
-        FragmentNotice homeFragment = new FragmentNotice();
-//        Bundle bundle = new Bundle();
-//        bundle.putString(Constants.ARGS,s);
-//        homeFragment.setArguments(bundle);
-        return homeFragment;
+        FragmentNotice noticeFragment = new FragmentNotice();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.ARGS,s);
+        noticeFragment.setArguments(bundle);
+        return noticeFragment;
 }
 
     @Nullable

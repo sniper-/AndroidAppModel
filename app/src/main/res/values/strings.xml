@@ -31,5 +31,6 @@
     <string name="navi_button_chart">图表</string>
     <string name="navi_button_notice">舆情</string>
     <string name="navi_button_mine">关于</string>
+    <string name="home_list_name">产品服务咨询</string>
 
 </resources>

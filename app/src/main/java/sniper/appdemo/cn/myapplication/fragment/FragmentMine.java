@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import sniper.appdemo.cn.myapplication.Constants;
 import sniper.appdemo.cn.myapplication.R;
 import sniper.appdemo.cn.myapplication.adapter.MineAdapter;
 import sniper.appdemo.cn.myapplication.bean.MineBean;
@@ -28,11 +29,11 @@ public class FragmentMine extends Fragment {
     private MineAdapter mAapter;
 
     public static FragmentMine newInstance(String s){
-        FragmentMine homeFragment = new FragmentMine();
+        FragmentMine mineFragment = new FragmentMine();
         Bundle bundle = new Bundle();
-        //bundle.putString(Constants.ARGS,s);
-        homeFragment.setArguments(bundle);
-        return homeFragment;
+        bundle.putString(Constants.ARGS,s);
+        mineFragment.setArguments(bundle);
+        return mineFragment;
 }
 
     @Nullable
@@ -49,19 +50,23 @@ public class FragmentMine extends Fragment {
 
     private void initData() {
         MineBean mineBean0 = new MineBean();
-        mineBean0.mineItemName = "我的市场";
+        mineBean0.mineItemName = "虚拟货币";
         mMineBeanList.add(mineBean0);
 
         MineBean mineBean1 = new MineBean();
-        mineBean1.mineItemName = "我的足迹";
+        mineBean1.mineItemName = "信用积分";
         mMineBeanList.add(mineBean1);
 
         MineBean mineBean2 = new MineBean();
-        mineBean2.mineItemName = "关注管理";
+        mineBean2.mineItemName = "信用等级";
         mMineBeanList.add(mineBean2);
 
         MineBean mineBean3 = new MineBean();
-        mineBean3.mineItemName = "关于我们";
+        mineBean3.mineItemName = "我的订单";
         mMineBeanList.add(mineBean3);
+
+        MineBean mineBean4 = new MineBean();
+        mineBean4.mineItemName = "我的提问";
+        mMineBeanList.add(mineBean4);
     }
 }

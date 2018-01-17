@@ -24,6 +24,7 @@ import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.ColumnChartView;
 import lecho.lib.hellocharts.view.LineChartView;
+import sniper.appdemo.cn.myapplication.Constants;
 import sniper.appdemo.cn.myapplication.R;
 
 /**
@@ -34,11 +35,11 @@ import sniper.appdemo.cn.myapplication.R;
 
 public class FragmentDash extends Fragment {
     public static FragmentDash newInstance(String s) {
-        FragmentDash homeFragment = new FragmentDash();
-//        Bundle bundle = new Bundle();
-//        bundle.putString(Constants.ARGS, s);
-//        homeFragment.setArguments(bundle);
-        return homeFragment;
+        FragmentDash dashFragment = new FragmentDash();
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.ARGS, s);
+        dashFragment.setArguments(bundle);
+        return dashFragment;
     }
 
     public final static String[] months = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
