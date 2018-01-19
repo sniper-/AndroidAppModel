@@ -4,9 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/lv_mine"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="30sp"
+        android:background="@color/grey_200"
+        android:text="@string/mine_item_QA"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        />
 
+    <ListView
+        android:id="@+id/mine_item_QA"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"/>
 </LinearLayout>
