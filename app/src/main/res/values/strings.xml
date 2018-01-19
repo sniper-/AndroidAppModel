@@ -27,6 +27,8 @@
     <string name="notice_item_from">知乎  57分钟前</string>
     <string name="notice_item_content">比特币估值飙6,300美元，创历史新高！</string>
 
+    <string name="market_item_content">这里填写备注</string>
+
     <string name="navi_button_home">主页</string>
     <string name="navi_button_chart">图表</string>
     <string name="navi_button_notice">舆情</string>

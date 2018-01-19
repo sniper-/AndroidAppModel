@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="60dp"
+    android:layout_width="match_parent">
+
+    <ImageView
+        android:id="@+id/market_grid_big"
+        android:src="@drawable/ic_menu_camera"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="@string/home_item_name" />
+
+    <TextView
+        android:id="@+id/market_grid_big_name"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:layout_toEndOf="@id/market_grid_big"
+        android:text="@string/notice_item_from" />
+
+    <TextView
+        android:id="@+id/market_grid_big_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/market_grid_big_name"
+        android:gravity="center"
+        android:text="@string/market_item_content"
+        android:textSize="15sp" />
+
+</RelativeLayout>

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="84dp"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/home_item_horizon_line"
+        android:layout_above="@+id/home_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:gravity="center"
+        android:background="@color/grey_200"/>
 
     <ImageView
         android:src="@mipmap/mayi"
@@ -13,8 +21,6 @@
         android:layout_alignParentStart="true"
         android:gravity="center"
         android:textSize="30sp"
-        android:maxLines="1"
-        android:ellipsize="marquee"
         android:text="@string/home_item_name" />
 
     <TextView
@@ -26,8 +32,6 @@
         android:layout_alignParentStart="true"
         android:gravity="center"
         android:textSize="15sp"
-        android:maxLines="1"
-        android:ellipsize="marquee"
         android:text="@string/home_item_name" />
 
     <TextView
