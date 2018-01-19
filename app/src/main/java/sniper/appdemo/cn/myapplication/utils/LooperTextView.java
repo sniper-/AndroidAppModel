@@ -33,9 +33,9 @@ public class LooperTextView extends FrameLayout{
     private static final int ANIM_DURATION = 1* 1000;
     private static final String DEFAULT_TEXT_COLOR = "#2F4F4F";
     private static final int DEFAULT_TEXT_SIZE = 16;
-    private Drawable head_boy,head_girl;
+//    private Drawable head_boy,head_girl;
     private TextView tv_tip_out,tv_tip_in;
-    private static final String TIP_PREFIX = "是女性明星";
+    private static final String TIP_PREFIX = "";
     private Animation anim_out, anim_in;
     public LooperTextView(Context context) {
         super(context);
@@ -55,8 +55,8 @@ public class LooperTextView extends FrameLayout{
         initAnimation();
     }
     private void initTipFrame() {
-        head_boy = loadDrawable(R.mipmap.ic_launcher);
-        head_girl = loadDrawable(R.mipmap.ic_launcher_round);
+//        head_boy = loadDrawable(R.mipmap.ic_launcher);
+//        head_girl = loadDrawable(R.mipmap.ic_launcher_round);
         tv_tip_out = newTextView();
         tv_tip_in = newTextView();
         addView(tv_tip_in);
@@ -135,11 +135,11 @@ public class LooperTextView extends FrameLayout{
         }
     }
     private void updateTip(TextView tipView) {
-        if (new Random().nextBoolean()) {
-            tipView.setCompoundDrawables(head_boy, null, null, null);
-        } else {
-            tipView.setCompoundDrawables(head_girl, null, null, null);
-        }
+//        if (new Random().nextBoolean()) {
+//            tipView.setCompoundDrawables(head_boy, null, null, null);
+//        } else {
+//            tipView.setCompoundDrawables(head_girl, null, null, null);
+//        }
         String tip = getNextTip();
         if(!TextUtils.isEmpty(tip)) {
             tipView.setText(tip+TIP_PREFIX);

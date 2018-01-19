@@ -87,20 +87,13 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
 
     private List<String> initTips() {
         List<String> tips = new ArrayList<>();
-        tips.add("赵丽颖");
-        tips.add("杨颖");
-        tips.add("郑爽");
-        tips.add("杨幂");
-        tips.add("刘诗诗");
-        tips.add("迪丽热巴");
-        tips.add("李沁");
-        tips.add("唐嫣");
-        tips.add("林心如");
-        tips.add("陈乔恩");
-        tips.add("范冰冰");
-        tips.add("刘亦菲");
-        tips.add("李小璐");
-        tips.add("佟丽娅");
+        tips.add("国务院:建好\"信用时代\"的基础设施");
+        tips.add("腾讯公布吃鸡专属信用体系严打外挂");
+        tips.add("五项新政策 让\"信用\"开花结果");
+        tips.add("首批500家失信电商黑名单发布");
+        tips.add("发改委双11前强化信用问题");
+        tips.add("芝麻信用现\"刷分\"产业链");
+
         return tips;
     }
 

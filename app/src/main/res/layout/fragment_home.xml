@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/grey_300">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -52,15 +53,31 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <sniper.appdemo.cn.myapplication.utils.LooperTextView
-        android:id="@+id/looperview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/blue_100"
-        android:padding="10dp"
-        android:orientation="horizontal">
-    </sniper.appdemo.cn.myapplication.utils.LooperTextView>
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/loopImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_centerVertical="true"/>
+
+        <sniper.appdemo.cn.myapplication.utils.LooperTextView
+            android:id="@+id/looperview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/loopImage"
+            android:orientation="horizontal">
+        </sniper.appdemo.cn.myapplication.utils.LooperTextView>
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
