@@ -8,10 +8,13 @@
         android:id="@+id/gridview_fortune_item_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"/>
 
     <TextView
         android:id="@+id/gridview_fortune_item_name"
+        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/gridview_fortune_item_num"

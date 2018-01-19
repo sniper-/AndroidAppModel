@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40sp"
-        android:background="@color/grey_200"
+        android:layout_height="wrap_content"
         android:text="@string/home_list_name"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
@@ -20,5 +20,5 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="4dp"/>
 </LinearLayout>

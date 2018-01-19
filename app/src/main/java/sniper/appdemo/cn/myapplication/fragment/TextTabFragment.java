@@ -43,8 +43,8 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_text_tab, container, false);
         mTextView = view.findViewById(R.id.activity_text_view);
         mTHome = view.findViewById(R.id.tv_home);
-        mTLocation = view.findViewById(R.id.tv_dash);
-        mTLike = view.findViewById(R.id.tv_like);
+        mTLocation = view.findViewById(R.id.tv_like);
+        mTLike = view.findViewById(R.id.tv_dash);
         mTMe = view.findViewById(R.id.tv_person);
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -80,12 +80,12 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 setTabState(mTHome, R.drawable.ic_navi_home_checked, getColor(R.color.colorPrimary));
                 switchFrgment(0);
                 break;
-            case R.id.tv_dash:
-                setTabState(mTLocation, R.drawable.ic_navi_bottom_dash_checked, getColor(R.color.colorPrimary));
+            case R.id.tv_like:
+                setTabState(mTLocation, R.drawable.ic_navi_bottom_search_checked, getColor(R.color.colorPrimary));
                 switchFrgment(1);
                 break;
-            case R.id.tv_like:
-                setTabState(mTLike, R.drawable.ic_navi_bottom_search_checked, getColor(R.color.colorPrimary));
+            case R.id.tv_dash:
+                setTabState(mTLike, R.drawable.ic_navi_bottom_dash_checked, getColor(R.color.colorPrimary));
                 switchFrgment(2);
                 break;
             case R.id.tv_person:
