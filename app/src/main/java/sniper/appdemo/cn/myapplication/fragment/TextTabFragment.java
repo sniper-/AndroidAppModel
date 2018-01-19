@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import sniper.appdemo.cn.myapplication.Constants;
 import sniper.appdemo.cn.myapplication.R;
 
 /**
@@ -22,10 +21,10 @@ import sniper.appdemo.cn.myapplication.R;
  */
 
 public class TextTabFragment extends Fragment implements View.OnClickListener {
-    private TextView mTHome, mTLocation, mTLike, mTMe, mTextView;
+    private TextView mTHome, mTMarket, mTFound, mTPerson, mTextView;
     private FragmentHome mHomeFragment;
     //private FragmentNotice mNoticeFragment;
-    private FragmentDash mLikeFragment;
+    private FragmentDash mFoundFragment;
     private FragmentMine mPersonFragment;
     private FragmentMarket mMarketFragment;
 
@@ -43,9 +42,9 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_text_tab, container, false);
         mTextView = view.findViewById(R.id.activity_text_view);
         mTHome = view.findViewById(R.id.tv_home);
-        mTLocation = view.findViewById(R.id.tv_like);
-        mTLike = view.findViewById(R.id.tv_dash);
-        mTMe = view.findViewById(R.id.tv_person);
+        mTMarket = view.findViewById(R.id.tv_market);
+        mTFound = view.findViewById(R.id.tv_found);
+        mTPerson = view.findViewById(R.id.tv_person);
         Bundle bundle = getArguments();
         if (bundle != null) {
 //            String s = bundle.getString(Constants.ARGS);
@@ -56,9 +55,9 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
             }
         }
         mTHome.setOnClickListener(this);
-        mTLocation.setOnClickListener(this);
-        mTLike.setOnClickListener(this);
-        mTMe.setOnClickListener(this);
+        mTMarket.setOnClickListener(this);
+        mTFound.setOnClickListener(this);
+        mTPerson.setOnClickListener(this);
         setDefaultFragment();
         return view;
     }
@@ -80,16 +79,16 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 setTabState(mTHome, R.drawable.ic_navi_home_checked, getColor(R.color.colorPrimary));
                 switchFrgment(0);
                 break;
-            case R.id.tv_like:
-                setTabState(mTLocation, R.drawable.ic_navi_bottom_search_checked, getColor(R.color.colorPrimary));
+            case R.id.tv_market:
+                setTabState(mTMarket, R.drawable.ic_navi_bottom_market_checked, getColor(R.color.colorPrimary));
                 switchFrgment(1);
                 break;
-            case R.id.tv_dash:
-                setTabState(mTLike, R.drawable.ic_navi_bottom_dash_checked, getColor(R.color.colorPrimary));
+            case R.id.tv_found:
+                setTabState(mTFound, R.drawable.ic_navi_bottom_search_checked, getColor(R.color.colorPrimary));
                 switchFrgment(2);
                 break;
             case R.id.tv_person:
-                setTabState(mTMe, R.drawable.ic_navi_bottom_person_checked, getColor(R.color.colorPrimary));
+                setTabState(mTPerson, R.drawable.ic_navi_bottom_person_checked, getColor(R.color.colorPrimary));
                 switchFrgment(3);
                 break;
         }
@@ -113,8 +112,8 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 if(mMarketFragment != null){
                     transaction.hide(mMarketFragment);
                 }
-                if(mLikeFragment != null){
-                    transaction.hide(mLikeFragment);
+                if(mFoundFragment != null){
+                    transaction.hide(mFoundFragment);
                 }
                 if(mPersonFragment != null){
                     transaction.hide(mPersonFragment);
@@ -126,7 +125,7 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 }
 
                 break;
-            case 2:
+            case 1:
                 if (mMarketFragment == null) {
                     //mMarketFragment = FragmentNotice.newInstance(getString(R.string.item_location));
                     mMarketFragment = FragmentMarket.newInstance(getString(R.string.item_location));
@@ -134,8 +133,8 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 if(mHomeFragment != null){
                     transaction.hide(mHomeFragment);
                 }
-                if(mLikeFragment != null){
-                    transaction.hide(mLikeFragment);
+                if(mFoundFragment != null){
+                    transaction.hide(mFoundFragment);
                 }
                 if(mPersonFragment != null){
                     transaction.hide(mPersonFragment);
@@ -146,9 +145,9 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                     transaction.show(mMarketFragment);
                 }
                 break;
-            case 1:
-                if (mLikeFragment == null) {
-                    mLikeFragment = FragmentDash.newInstance(getString(R.string.item_like));
+            case 2:
+                if (mFoundFragment == null) {
+                    mFoundFragment = FragmentDash.newInstance(getString(R.string.item_like));
                 }
                 if(mMarketFragment != null){
                     transaction.hide(mMarketFragment);
@@ -159,10 +158,10 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 if(mPersonFragment != null){
                     transaction.hide(mPersonFragment);
                 }
-                if(!mLikeFragment.isAdded()){
-                    transaction.add(R.id.sub_content, mLikeFragment);
+                if(!mFoundFragment.isAdded()){
+                    transaction.add(R.id.sub_content, mFoundFragment);
                 }else{
-                    transaction.show(mLikeFragment);
+                    transaction.show(mFoundFragment);
                 }
                 break;
             case 3:
@@ -172,8 +171,8 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 if(mMarketFragment != null){
                     transaction.hide(mMarketFragment);
                 }
-                if(mLikeFragment != null){
-                    transaction.hide(mLikeFragment);
+                if(mFoundFragment != null){
+                    transaction.hide(mFoundFragment);
                 }
                 if(mHomeFragment != null){
                     transaction.hide(mHomeFragment);
@@ -207,9 +206,9 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
      */
     private void resetTabState() {
         setTabState(mTHome, R.drawable.ic_navi_bottom_home, getColor(R.color.black_1));
-        setTabState(mTLocation, R.drawable.ic_navi_bottom_dash, getColor(R.color.black_1));
-        setTabState(mTLike, R.drawable.ic_navi_bottom_search, getColor(R.color.black_1));
-        setTabState(mTMe, R.drawable.ic_navi_bottom_person, getColor(R.color.black_1));
+        setTabState(mTMarket, R.drawable.ic_navi_bottom_market, getColor(R.color.black_1));
+        setTabState(mTFound, R.drawable.ic_navi_bottom_search, getColor(R.color.black_1));
+        setTabState(mTPerson, R.drawable.ic_navi_bottom_person, getColor(R.color.black_1));
 
     }
 

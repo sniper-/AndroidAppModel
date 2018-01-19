@@ -17,13 +17,13 @@
         android:text="@string/item_home"/>
 
     <TextView
-        android:id="@+id/tv_dash"
+        android:id="@+id/tv_market"
         style="@style/viewpager_navigation_bar_tab_style"
-        android:drawableTop="@drawable/ic_navi_bottom_dash"
+        android:drawableTop="@drawable/ic_navi_bottom_market"
         android:text="@string/item_like"/>
 
     <TextView
-        android:id="@+id/tv_like"
+        android:id="@+id/tv_found"
         style="@style/viewpager_navigation_bar_tab_style"
         android:drawableTop="@drawable/ic_navi_bottom_search"
         android:text="@string/item_location"/>
