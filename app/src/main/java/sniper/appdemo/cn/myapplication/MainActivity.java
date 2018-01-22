@@ -1,5 +1,6 @@
 package sniper.appdemo.cn.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -80,6 +81,26 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        //创建签到按钮监听事件
+        if (id == R.id.sign){
+            //判断是否登录:若登录，则执行签到成功，反之跳转登录
+//            if(1==1){
+//
+//            }else{
+//
+//            }
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(i);
+            return true;
+        }
+
+        //创建搜索按钮监听事件
+        if(id == R.id.search){
+            Intent j = new Intent(MainActivity.this, SignupActivity.class);
+            startActivity(j);
             return true;
         }
 

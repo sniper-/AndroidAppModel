@@ -23,8 +23,8 @@ import sniper.appdemo.cn.myapplication.R;
 public class TextTabFragment extends Fragment implements View.OnClickListener {
     private TextView mTHome, mTMarket, mTFound, mTPerson, mTextView;
     private FragmentHome mHomeFragment;
-    //private FragmentNotice mNoticeFragment;
-    private FragmentDash mFoundFragment;
+    //private FragmentFound mNoticeFragment;
+    private FragmentFound mFoundFragment;
     private FragmentMine mPersonFragment;
     private FragmentMarket mMarketFragment;
 
@@ -127,7 +127,7 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 break;
             case 1:
                 if (mMarketFragment == null) {
-                    //mMarketFragment = FragmentNotice.newInstance(getString(R.string.item_location));
+                    //mMarketFragment = FragmentFound.newInstance(getString(R.string.item_location));
                     mMarketFragment = FragmentMarket.newInstance(getString(R.string.item_location));
                 }
                 if(mHomeFragment != null){
@@ -147,7 +147,7 @@ public class TextTabFragment extends Fragment implements View.OnClickListener {
                 break;
             case 2:
                 if (mFoundFragment == null) {
-                    mFoundFragment = FragmentDash.newInstance(getString(R.string.item_like));
+                    mFoundFragment = FragmentFound.newInstance(getString(R.string.item_like));
                 }
                 if(mMarketFragment != null){
                     transaction.hide(mMarketFragment);

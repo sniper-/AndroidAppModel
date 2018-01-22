@@ -6,12 +6,12 @@
         android:title="settings"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/libra"
+        android:id="@+id/search"
         android:title="notification"
         android:icon="@drawable/ic_navi_search"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/share"
+        android:id="@+id/sign"
         android:title="签到"
         android:icon="@drawable/ic_navi_sign"
         app:showAsAction="always"/>
