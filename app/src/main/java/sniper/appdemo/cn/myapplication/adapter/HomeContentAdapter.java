@@ -64,9 +64,12 @@ public class HomeContentAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if(convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = mLayoutInflater.inflate(R.layout.list_item_home, null);
-            viewHolder.mTvHomeItemRemark = convertView.findViewById(R.id.home_item_remark);
-            viewHolder.mTvHomeItemContent = convertView.findViewById(R.id.home_item_content);
+//            convertView = mLayoutInflater.inflate(R.layout.list_item_home, null);
+//            viewHolder.mTvHomeItemRemark = convertView.findViewById(R.id.home_item_remark);
+//            viewHolder.mTvHomeItemContent = convertView.findViewById(R.id.home_item_content);
+            convertView = mLayoutInflater.inflate(R.layout.card_item_home, null);
+            viewHolder.mTvHomeItemRemark = convertView.findViewById(R.id.tv_title);
+            viewHolder.mTvHomeItemContent = convertView.findViewById(R.id.tv_content);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
