@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity
 
         //创建搜索按钮监听事件
         if(id == R.id.search){
-            Intent j = new Intent(MainActivity.this, SignupActivity.class);
+            Intent j = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(j);
             return true;
         }
