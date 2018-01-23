@@ -1,6 +1,7 @@
 package sniper.appdemo.cn.myapplication;
 
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        _loginButton.setEnabled(false);
+        findViewById(R.id.btn_login).setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
@@ -68,8 +69,9 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        @SuppressLint("WrongViewCast") String email = findViewById(R.id.input_email).toString();
+        @SuppressLint("WrongViewCast") String password = findViewById(R.id.input_password).toString();
+        //String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
 
@@ -117,8 +119,10 @@ public class LoginActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+//        String email = _emailText.getText().toString();
+//        String password = _passwordText.getText().toString();
+        @SuppressLint("WrongViewCast") String email = findViewById(R.id.input_email).toString();
+        @SuppressLint("WrongViewCast") String password = findViewById(R.id.input_password).toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             _emailText.setError("enter a valid email address");

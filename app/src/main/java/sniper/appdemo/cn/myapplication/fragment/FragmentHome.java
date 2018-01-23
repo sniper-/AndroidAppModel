@@ -1,11 +1,14 @@
 package sniper.appdemo.cn.myapplication.fragment;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.SyncStateContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +25,7 @@ import sniper.appdemo.cn.myapplication.adapter.HomeContentAdapter;
 import sniper.appdemo.cn.myapplication.bean.HomeContentBean;
 import sniper.appdemo.cn.myapplication.utils.LooperTextView;
 
-public class FragmentHome extends Fragment implements ViewPager.OnPageChangeListener{
+public class FragmentHome extends Fragment implements ViewPager.OnPageChangeListener,SwipeRefreshLayout.OnRefreshListener {
     private ViewPager viewPager;
     private HomePicAdapter homePicAdapter;
     private List<View> viewPics;
@@ -32,9 +35,12 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
     private LooperTextView looperview;
 
     private List<HomeContentBean> mHomeContentBeanList = new ArrayList<>();
+    HomeContentBean homeContentBean;
     private HomeContentAdapter mAapter;
     private ListView listViewContent;
 
+    private SwipeRefreshLayout mSwipeLayout;
+    private boolean isRefresh = false;
 
 
 
@@ -70,12 +76,29 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
         listViewContent = view.findViewById(R.id.lv_main);
         initListData();
 
+        //设置SwipeRefreshLayout
+        mSwipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout);
+
+        //设置进度条的颜色主题，最多能设置四种 加载颜色是循环播放的，只要没有完成刷新就会一直循环
+        mSwipeLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED);
+
+        // 设置手指在屏幕下拉多少距离会触发下拉刷新
+        mSwipeLayout.setDistanceToTriggerSync(300);
+        // 设定下拉圆圈的背景
+        mSwipeLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
+        // 设置圆圈的大小
+        mSwipeLayout.setSize(SwipeRefreshLayout.LARGE);
+
+        //设置下拉刷新的监听
+        mSwipeLayout.setOnRefreshListener(this);
+
+
         return view;
     }
 
     private void initListData() {
         for (int i = 1; i < 9; i++) {
-            HomeContentBean homeContentBean = new HomeContentBean();
+            homeContentBean = new HomeContentBean();
             homeContentBean.homeItemRemark = "蚂蚁金服0"+i;
             homeContentBean.homeItemContent = "查验次数:"+(42783*i)+"次";
             mHomeContentBeanList.add(homeContentBean);
@@ -139,4 +162,30 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
     public void onPageScrollStateChanged(int state) {
 
     }
+
+    /*
+     * 监听器SwipeRefreshLayout.OnRefreshListener中的方法，当下拉刷新后触发
+     */
+    public void onRefresh() {
+        //检查是否处于刷新状态
+        if (!isRefresh) {
+            isRefresh = true;
+            //模拟加载网络数据，这里设置4秒，正好能看到4色进度条
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+
+                    //显示或隐藏刷新进度条
+                    mSwipeLayout.setRefreshing(false);
+                    //修改adapter的数据
+//                    homeContentBean = new HomeContentBean();
+//                    homeContentBean.homeItemRemark = "新添加的数据";
+//                    homeContentBean.homeItemContent = "新添加的数据备注";
+//                    mHomeContentBeanList.add(homeContentBean);
+//                    initListData();
+                    isRefresh = false;
+                }
+            }, 4000);
+        }
+    }
+
 }
