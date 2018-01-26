@@ -76,21 +76,21 @@ public class FragmentHome extends Fragment implements ViewPager.OnPageChangeList
         listViewContent = view.findViewById(R.id.lv_main);
         initListData();
 
-        //设置SwipeRefreshLayout
-        mSwipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout);
-
-        //设置进度条的颜色主题，最多能设置四种 加载颜色是循环播放的，只要没有完成刷新就会一直循环
-        mSwipeLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED);
-
-        // 设置手指在屏幕下拉多少距离会触发下拉刷新
-        mSwipeLayout.setDistanceToTriggerSync(300);
-        // 设定下拉圆圈的背景
-        mSwipeLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
-        // 设置圆圈的大小
-        mSwipeLayout.setSize(SwipeRefreshLayout.LARGE);
-
-        //设置下拉刷新的监听
-        mSwipeLayout.setOnRefreshListener(this);
+//        //设置SwipeRefreshLayout
+//        mSwipeLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout);
+//
+//        //设置进度条的颜色主题，最多能设置四种 加载颜色是循环播放的，只要没有完成刷新就会一直循环
+//        mSwipeLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED);
+//
+//        // 设置手指在屏幕下拉多少距离会触发下拉刷新
+//        mSwipeLayout.setDistanceToTriggerSync(300);
+//        // 设定下拉圆圈的背景
+//        mSwipeLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
+//        // 设置圆圈的大小
+//        mSwipeLayout.setSize(SwipeRefreshLayout.LARGE);
+//
+//        //设置下拉刷新的监听
+//        mSwipeLayout.setOnRefreshListener(this);
 
 
         return view;
