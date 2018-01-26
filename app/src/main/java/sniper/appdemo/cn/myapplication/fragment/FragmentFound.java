@@ -40,9 +40,12 @@ public class FragmentFound extends Fragment implements AdapterView.OnItemClickLi
             R.drawable.ic_menu_camera, R.drawable.ic_menu_gallery, R.drawable.ic_menu_manage};
 
     private LooperTextView lpviewOpinion, lpviewProduct;
-    private MarqueView mvOption;
+    private MarqueView mvOption, mvProducts;
     List<String> data = new ArrayList<>();
     List<View> viewOptions = new ArrayList<>();
+
+    List<String> dataProducts = new ArrayList<>();
+    List<View> viewProducts = new ArrayList<>();
 
 
     public static FragmentFound newInstance(String s){
@@ -82,9 +85,9 @@ public class FragmentFound extends Fragment implements AdapterView.OnItemClickLi
 
 //        lpviewProduct = view.findViewById(R.id.loopProduct_text);
 //        lpviewProduct.setTipList(data);
-//        mvOption = view.findViewById(R.id.mv2);
-//        initTips();
-//        initMvOption();
+        mvProducts = view.findViewById(R.id.mv2);
+        initTips2();
+        initMvProduct();
 
         return view;
     }
@@ -183,6 +186,59 @@ public class FragmentFound extends Fragment implements AdapterView.OnItemClickLi
         setView();
         mvOption.setViews(viewOptions);
     }
+    private void setView2() {
+        for (int i = 0; i < dataProducts.size(); i = i + 4) {
+            final int position = i;
+            //设置滚动的单个布局
+            LinearLayout moreView = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.item_view, null);
+            //初始化布局的控件
+            TextView tv1 = (TextView) moreView.findViewById(R.id.tv1);
+            TextView tv2 = (TextView) moreView.findViewById(R.id.tv2);
+            TextView tv3 = (TextView) moreView.findViewById(R.id.tv3);
+            TextView tv4 = (TextView) moreView.findViewById(R.id.tv4);
+
+            /**
+             * 设置监听
+             */
+            moreView.findViewById(R.id.rl).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getActivity(), position + "你点击了" + dataProducts.get(position).toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            /**
+             * 设置监听
+             */
+            moreView.findViewById(R.id.rl2).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getActivity(), position + "你点击了" + dataProducts.get(position + 1).toString(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            //进行对控件赋值
+            tv1.setText(dataProducts.get(i).toString());
+            if (dataProducts.size() > (i+4)) {
+                tv2.setText(dataProducts.get(i + 1).toString());
+                tv3.setText(dataProducts.get(i + 2).toString());
+                tv4.setText(dataProducts.get(i + 3).toString());
+            }else if((dataProducts.size()-i) == 2){
+                tv2.setText(dataProducts.get(i + 1).toString());
+                moreView.findViewById(R.id.rl3).setVisibility(View.GONE);
+                moreView.findViewById(R.id.rl4).setVisibility(View.GONE);
+            }else if((dataProducts.size()-i) == 3){
+                tv2.setText(dataProducts.get(i + 1).toString());
+                tv3.setText(dataProducts.get(i + 2).toString());
+                moreView.findViewById(R.id.rl4).setVisibility(View.GONE);
+            }
+
+            //添加到循环滚动数组里面去
+            viewProducts.add(moreView);
+        }
+    }
+    private void initMvProduct(){
+        setView2();
+        mvProducts.setViews(viewProducts);
+    }
 
     private List<String> initTips() {
         data = new ArrayList<>();
@@ -194,5 +250,19 @@ public class FragmentFound extends Fragment implements AdapterView.OnItemClickLi
         data.add("芝麻信用现\"刷分\"产业链");
 
         return data;
+    }
+
+    private List<String> initTips2() {
+        dataProducts = new ArrayList<>();
+        dataProducts.add("首批500家失信电商黑名单发布");
+        dataProducts.add("发改委双11前强化信用问题");
+        dataProducts.add("芝麻信用现\"刷分\"产业链");
+        dataProducts.add("国务院:建好\"信用时代\"的基础设施");
+        dataProducts.add("腾讯公布吃鸡专属信用体系严打外挂");
+        dataProducts.add("五项新政策 让\"信用\"开花结果");
+        dataProducts.add("人民银行等八部委联合印发《关于改进和加强海洋经济发展金融服务的指导意见》");
+        dataProducts.add("七部门发文促核准对外投资资金真实去向");
+
+        return dataProducts;
     }
 }
