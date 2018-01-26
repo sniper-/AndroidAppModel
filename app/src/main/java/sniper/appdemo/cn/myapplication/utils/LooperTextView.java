@@ -37,6 +37,7 @@ public class LooperTextView extends FrameLayout{
     private TextView tv_tip_out,tv_tip_in;
     private static final String TIP_PREFIX = "";
     private Animation anim_out, anim_in;
+
     public LooperTextView(Context context) {
         super(context);
         initTipFrame();
@@ -54,6 +55,7 @@ public class LooperTextView extends FrameLayout{
         initTipFrame();
         initAnimation();
     }
+
     private void initTipFrame() {
 //        head_boy = loadDrawable(R.mipmap.ic_launcher);
 //        head_girl = loadDrawable(R.mipmap.ic_launcher_round);
@@ -62,6 +64,7 @@ public class LooperTextView extends FrameLayout{
         addView(tv_tip_in);
         addView(tv_tip_out);
     }
+
     private TextView newTextView(){
         TextView textView = new TextView(getContext());
         LayoutParams lp = new LayoutParams(
@@ -75,6 +78,7 @@ public class LooperTextView extends FrameLayout{
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_TEXT_SIZE);
         return textView;
     }
+
     /**
      *  将资源图片转换为Drawable对象
      * @param ResId
@@ -85,6 +89,7 @@ public class LooperTextView extends FrameLayout{
         drawable.setBounds(0, 0, drawable.getMinimumWidth() - 10, drawable.getMinimumHeight() - 10);
         return drawable;
     }
+
     private void initAnimation() {
         anim_out = newAnimation(0, -1);
         anim_in = newAnimation(1, 0);
@@ -106,6 +111,7 @@ public class LooperTextView extends FrameLayout{
             }
         });
     }
+
     private Animation newAnimation(float fromYValue, float toYValue) {
         Animation anim = new TranslateAnimation(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,0,
                 Animation.RELATIVE_TO_SELF,fromYValue,Animation.RELATIVE_TO_SELF, toYValue);
@@ -114,6 +120,7 @@ public class LooperTextView extends FrameLayout{
         anim.setInterpolator(new DecelerateInterpolator());
         return anim;
     }
+
     private void updateTipAndPlayAnimationWithCheck() {
         if (System.currentTimeMillis() - lastTimeMillis < 1000 ) {
             return ;
@@ -121,6 +128,7 @@ public class LooperTextView extends FrameLayout{
         lastTimeMillis = System.currentTimeMillis();
         updateTipAndPlayAnimation();
     }
+
     private void updateTipAndPlayAnimation() {
         if (curTipIndex % 2 == 0) {
             updateTip(tv_tip_out);
@@ -134,6 +142,7 @@ public class LooperTextView extends FrameLayout{
             this.bringChildToFront(tv_tip_out);
         }
     }
+
     private void updateTip(TextView tipView) {
 //        if (new Random().nextBoolean()) {
 //            tipView.setCompoundDrawables(head_boy, null, null, null);
@@ -145,6 +154,7 @@ public class LooperTextView extends FrameLayout{
             tipView.setText(tip+TIP_PREFIX);
         }
     }
+
     /**
      *  获取下一条消息
      * @return
@@ -153,9 +163,11 @@ public class LooperTextView extends FrameLayout{
         if (isListEmpty(tipList)) return null;
         return tipList.get(curTipIndex++ % tipList.size());
     }
+
     public static boolean isListEmpty(List list) {
         return list == null || list.isEmpty();
     }
+
     public void setTipList(List<String> tipList) {
         this.tipList = tipList;
         curTipIndex = 0;
