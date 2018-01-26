@@ -163,7 +163,7 @@ public class FragmentFound extends Fragment implements AdapterView.OnItemClickLi
             });
             //进行对控件赋值
             tv1.setText(data.get(i).toString());
-            if (data.size() > (i+4)) {
+            if (data.size() >= (i+4)) {
                 tv2.setText(data.get(i + 1).toString());
                 tv3.setText(data.get(i + 2).toString());
                 tv4.setText(data.get(i + 3).toString());
@@ -217,7 +217,7 @@ public class FragmentFound extends Fragment implements AdapterView.OnItemClickLi
             });
             //进行对控件赋值
             tv1.setText(dataProducts.get(i).toString());
-            if (dataProducts.size() > (i+4)) {
+            if (dataProducts.size() >= (i+4)) {
                 tv2.setText(dataProducts.get(i + 1).toString());
                 tv3.setText(dataProducts.get(i + 2).toString());
                 tv4.setText(dataProducts.get(i + 3).toString());
