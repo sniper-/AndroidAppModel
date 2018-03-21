@@ -3,6 +3,8 @@ package sniper.appdemo.cn.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,12 +21,13 @@ import sniper.appdemo.cn.myapplication.bean.HomePicBean;
 import sniper.appdemo.cn.myapplication.fragment.TextTabFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
+        implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     private TextTabFragment mTextTabFragment;
     ConvenientBanner<HomePicBean> convenientBanner;
     private Toolbar mToolbar;
     private static final long DELAY_TIME = 5000;
+    SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,14 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         //getMenuInflater().inflate(R.menu.main, menu);
         getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
+        MenuItem searchItem = menu.findItem(R.id.search);
+        //通过MenuItem得到SearchView
+        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        mSearchView.setIconifiedByDefault(false);
+        mSearchView.setMaxWidth(800);
+        mSearchView.setQueryHint("请输入要搜索的内容");
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -85,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         //创建签到按钮监听事件
-        if (id == R.id.sign){
+        if (id == R.id.sign) {
             //判断是否登录:若登录，则执行签到成功，反之跳转登录
 //            if(1==1){
 //
@@ -98,7 +108,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         //创建搜索按钮监听事件
-        if(id == R.id.search){
+        if (id == R.id.search) {
             Intent j = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(j);
             return true;
@@ -149,7 +159,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onResume() {
         super.onResume();
-        if(convenientBanner != null){
+        if (convenientBanner != null) {
             convenientBanner.startTurning(DELAY_TIME);
         }
     }
@@ -158,8 +168,18 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onPause() {
         super.onPause();
-        if(convenientBanner != null){
+        if (convenientBanner != null) {
             convenientBanner.stopTurning();
         }
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu, menu);
+//        MenuItem searchItem = menu.findItem(R.id.search);
+//        //通过MenuItem得到SearchView
+//        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
 }
